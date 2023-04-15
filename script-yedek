@@ -1,0 +1,145 @@
+const firstName = document.getElementById("fname");
+
+const lastName = document.getElementById("lname");
+const emailAddress = document.getElementById("email");
+const password = document.getElementById("password");
+
+const warningFirstName = document.getElementById("warning-message-fname");
+const warningFirstNameInitial = warningFirstName.innerHTML;
+
+const warningLastName = document.getElementById("warning-message-lname");
+const warningLastNameInitial = warningLastName.innerHTML;
+
+const warningEmail = document.getElementById("warning-message-email");
+const warningPassword = document.getElementById("warning-message-password");
+
+const submitButton = document.getElementById("submit-btn");
+const warningSubmit = document.getElementById("warning-message-submit");
+
+let validFirstName = false;
+let validLastName = false;
+let validEmail = false;
+let validPassword = false;
+
+firstName.addEventListener("blur", validateFirstName);
+
+function validateFirstName() {
+  const firstNameValue = firstName.value;
+  const firstNameTrim = firstNameValue.trim();
+  const letterPattern = /^[A-Za-z]+$/;
+
+  if (firstNameValue.length == 0) {
+    warningFirstName.innerHTML = warningFirstNameInitial;
+    warningFirstName.classList.remove("hidden");
+    firstName.classList.add("empty-input");
+    validFirstName = false;
+  } else if (!letterPattern.test(firstNameTrim)) {
+    warningFirstName.innerHTML = "First name can only contain letters!";
+    warningFirstName.classList.remove("hidden");
+    firstName.classList.add("empty-input");
+    validFirstName = false;
+  } else {
+    warningFirstName.classList.add("hidden");
+    firstName.classList.remove("empty-input");
+    validFirstName = true;
+  }
+}
+
+lastName.addEventListener("blur", validateLastName);
+
+function validateLastName() {
+  const lastNameValue = lastName.value;
+  const lastNameTrim = lastNameValue.trim();
+  const letterPattern = /^[A-Za-z]+$/;
+
+  if (lastNameValue.length == 0) {
+    warningLastName.innerHTML = warningLastNameInitial;
+    warningLastName.classList.remove("hidden");
+    lastName.classList.add("empty-input");
+    validLastName = false;
+  } else if (!letterPattern.test(lastNameTrim)) {
+    warningLastName.innerHTML = "last name can only contain letters!";
+    warningLastName.classList.remove("hidden");
+    lastName.classList.add("empty-input");
+    validLastName = false;
+  } else {
+    warningLastName.classList.add("hidden");
+    lastName.classList.remove("empty-input");
+    validLastName = true;
+  }
+}
+
+emailAddress.addEventListener("blur", validateEmailAddress);
+
+function validateEmailAddress() {
+  const emailInput = emailAddress.value;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isValid = emailPattern.test(emailInput);
+
+  if (!isValid) {
+    warningEmail.classList.remove("hidden");
+    emailAddress.classList.add("empty-input");
+    validEmail = false;
+    console.log("false email");
+  } else {
+    warningEmail.classList.add("hidden");
+    emailAddress.classList.remove("empty-input");
+    validEmail = true;
+    console.log("true email");
+  }
+}
+
+password.addEventListener("blur", validatePassword);
+
+function validatePassword() {
+  const passwordValue = password.value;
+  const passwordTrim = passwordValue.trim();
+  const capitalLetterPattern = /[A-Z]/;
+  const specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
+  const numberPattern = /\d/;
+
+  if (
+    passwordValue.length > 8 &&
+    capitalLetterPattern.test(passwordTrim) &&
+    specialCharacterPattern.test(passwordTrim) &&
+    numberPattern.test(passwordTrim)
+  ) {
+    warningPassword.classList.add("hidden");
+    password.classList.remove("empty-input");
+    validPassword = true;
+  } else {
+    warningPassword.classList.remove("hidden");
+    password.classList.add("empty-input");
+    validPassword = false;
+  }
+}
+
+submitButton.addEventListener("click", validateFun);
+console.log("password");
+
+function validateFun() {
+  if (validFirstName && validLastName && validEmail && validPassword) {
+    submitButton.innerHTML = "CHECK YOUR INBOX!";
+    warningSubmit.classList.add("hidden");
+    console.log(
+      `${validFirstName} - ${validLastName} - ${validEmail} - ${validPassword}`
+    );
+    console.log("this bitch");
+
+  } else {
+    console.log(
+        `${validFirstName} - ${validLastName} - ${validEmail} - ${validPassword}`
+      );
+    submitButton.innerHTML = "CLAIM YOUR FREE TRIAL";
+    warningSubmit.classList.remove("hidden");
+    console.log("that bitch");
+  }
+}
+
+/* submitButton.addEventListener("mouseout", validateFun);
+
+function validateFun() {
+  submitButton.innerHTML = "CLAIM YOUR FREE TRIAL";
+  console.log("son of a bitch");
+  
+} */

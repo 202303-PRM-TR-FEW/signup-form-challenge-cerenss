@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap');
+
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    background-image: url(./images/bg-intro-mobile.png);
+    background-color: rgba(255, 122, 122, 1);
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    padding: 30px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.try-box {
+    height: 50px;
+    width: 80%;
+    padding: 20px;
+    background-color: rgb(93, 85, 163);
+    border-radius: 10px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.form-box {
+    margin: 10px;
+    padding: 20px;
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    color: rgb(145, 145, 145);
+    border: 2px solid rgba(145, 145, 145, .5);
+    border-radius: 10px;
+    height: 30px;
+}
+
+.empty-input {
+    background-image: url(./images/icon-error.svg);
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+.warning-style {
+    color:hsl(0, 100%, 74%);
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: end;
+}
+
+.claim-btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background-color: hsl(154, 59%, 51%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.claim-btn:hover {
+    background-color: rgba(56, 204, 140, .5);
+}
+
+#warning-message-submit {
+    color:hsl(0, 100%, 74%);
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.terms {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: rgba(145, 145, 145, .5);
+}
+
+.red-text {
+    color: hsl(0, 100%, 74%);
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 40px;
+        align-items: center;
+        background-image: url(./images/bg-intro-desktop.png);
+        background-repeat: repeat;
+    }
+}
